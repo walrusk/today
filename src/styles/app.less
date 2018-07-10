@@ -1,0 +1,76 @@
+/////////////////////////
+// APP
+/////////////////////////
+
+html,body {
+    background-color:@light-bg;
+}
+
+#root {
+    position:relative;
+    height:100%;
+}
+
+/////////////////////////
+// LAYOUT
+/////////////////////////
+
+.ant-layout-header,
+.ant-layout-content {
+    width:500px;
+    max-width:100%;
+    margin:0 auto;
+}
+
+.ant-layout-header {
+    padding:0 10px;
+}
+
+/////////////////////////
+// HEADINGS
+/////////////////////////
+
+h1,h2 {
+    padding:0 10px;
+    font-weight:200;
+}
+
+.app-heading {
+    margin-left:10px;
+    font-size:18px;
+    display:inline-block;
+    position:relative; top:3px;
+    line-height:2;
+    display:none;
+}
+
+.ant-badge-count {
+    top: -3px;
+    height: 12px;
+    border-radius: 10px;
+    min-width: 12px;
+    background: #f5222d;
+    line-height: 12px;
+    padding: 0 3px;
+    font-size: 8px;
+}
+
+.show-history {
+    float:right;
+    &-word {
+        font-size:11px;
+        color:@primary-color;
+        opacity:.4;
+        position:relative;
+        margin-left:5px;
+    }
+}
+
+/////////////////////////
+// ITEMS
+/////////////////////////
+
+.item-list {
+    list-style-type:none;
+    padding:0 20px;
+}

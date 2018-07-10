@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/wedges/*"],
+            "src/*": ["./src/*"],
+            "store/*": ["./src/store/*"]
+        },
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "today",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.2.1",
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.10",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.4",
+    "react-app-rewire-less": "2.1.0",
+    "react-app-rewired": "^1.4.1",
+    "webpack": "^3.11.0"
+  }
+}
