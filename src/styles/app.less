@@ -36,12 +36,30 @@ h1,h2 {
 }
 
 .app-heading {
-    margin-left:10px;
+    margin-left:7px;
     font-size:18px;
     display:inline-block;
-    position:relative; top:3px;
+    position:relative; top:2px;
     line-height:2;
-    display:none;
+    font-weight:100;
+    &-menu {
+        float:right;
+        position: relative;
+        top: 2px;
+    }
+    &-menu-popover {
+        text-align:center;
+        .ant-btn > .anticon + span {margin:0;}
+        & > div {
+            border-bottom:1px solid rgba(0,0,0,.05);
+            padding-bottom:8px; margin-bottom:8px;
+            &:last-child {border:0;padding:0;margin:0;}
+        }
+    }
+    &-menu-button {
+        opacity:.4;
+        &:hover {opacity:1;}
+    }
 }
 
 .ant-badge-count {
@@ -56,14 +74,28 @@ h1,h2 {
 }
 
 .show-history {
-    float:right;
     &-word {
         font-size:11px;
         color:@primary-color;
-        opacity:.4;
         position:relative;
         margin-left:5px;
     }
+}
+
+/////////////////////////
+// LOGIN PAGE
+/////////////////////////
+
+.google-login-button {
+    background:url('img/btn_google_signin_light_normal_web@2x.png') no-repeat;
+    background-size:cover;
+    width:191px;
+    height:46px;
+    border:none;
+    cursor:pointer;
+    text-indent:120%;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 /////////////////////////

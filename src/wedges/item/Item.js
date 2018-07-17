@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {PureComponent} from 'react';
 import {Checkbox} from 'antd';
 
-class Item extends Component {
+class Item extends PureComponent {
     render() {
         const {done, name} = this.props;
         return (

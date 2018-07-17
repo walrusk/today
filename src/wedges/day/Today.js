@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import ItemList from '@/item/ItemList';
 
-class Today extends Component {
+class Today extends PureComponent {
     render() {
         return (
             <div>

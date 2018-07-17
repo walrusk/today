@@ -30,8 +30,9 @@ const vars = {
     '@purple': PURPLE,
 
     '@light-bg': LIGHT_BG,
-    '@light-bg-half': LIGHT_BG,
+    '@light-bg-half': LIGHT_BG_HALF,
     '@grey': GREY,
+    '@white': WHITE,
 
     // PURPOSE COLOURS
     '@primary-color': PRIMARY,

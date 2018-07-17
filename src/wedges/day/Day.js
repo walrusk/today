@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {PureComponent} from 'react';
 import ItemList from '@/item/ItemList';
 
-class Day extends Component {
+class Day extends PureComponent {
     render() {
         const {date, items} = this.props;
         return (

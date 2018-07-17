@@ -1,8 +1,12 @@
 import {clone} from 'src/helpers/stateHelpers';
-// import {Types} from './appActions';
-// import {Types as PointTypes} from '@/point/pointActions';
+import Types from 'store/types';
 
 const initialState = {
+    online: true,
+    initialLoad: true,
+    loading: false,
+    syncing: false,
+    syncWaiting: false,
     today: [
         {id: 1, done: false, name: 'stuff to do'},
         {id: 2, done: false, name: 'other stuff to do'},
@@ -32,12 +36,20 @@ const AppReducer = (state, action) => {
     }
 
     switch (action.type) {
-        // case Types.APP_ONLINE:
-        //     return {
-        //         ...clone(state),
-        //         syncing: false,
-        //         syncWaiting: false,
-        //     };
+        case Types.app.APP_ONLINE:
+            return {
+                ...clone(state),
+                online: true,
+            };
+        case Types.app.APP_OFFLINE:
+            return {
+                ...clone(state),
+                online: false,
+            };
+        case Types.auth.SYNCED_USER:
+            return state.initialLoad
+                    ? { ...clone(state), initialLoad: false }
+                    : state;
         default:
             return state;
     }
