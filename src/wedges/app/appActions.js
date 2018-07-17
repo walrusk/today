@@ -1,4 +1,4 @@
-import {createActionCreatorGroup} from 'src/helpers/actionHelpers';
+import {createActionCreatorGroup} from 'store/actionHelpers';
 
 const {Types: SimpleTypes, Actions: SimpleActions} = createActionCreatorGroup({
     appOffline: [],

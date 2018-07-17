@@ -1,5 +1,4 @@
-import {clone} from 'src/helpers/stateHelpers';
-import {Types} from './authActions';
+import {Types,clone} from 'store';
 
 const initialState = {
     loading: false,
@@ -13,25 +12,25 @@ const AuthReducer = (state, action) => {
     }
 
     switch (action.type) {
-        case Types.LOGGING_IN:
-        case Types.LOGGING_OUT:
+        case Types.auth.LOGGING_IN:
+        case Types.auth.LOGGING_OUT:
             return {
                 ...clone(state),
                 loading: true,
             };
-        case Types.LOGGED_IN:
+        case Types.auth.LOGGED_IN:
             return {
                 ...clone(state),
                 loading: false,
                 loggedIn: true,
             };
-        case Types.LOGGED_OUT:
+        case Types.auth.LOGGED_OUT:
             return {
                 ...clone(state),
                 loading: false,
                 loggedIn: false,
             };
-        case Types.SYNCED_USER:
+        case Types.auth.SYNCED_USER:
             return {
                 ...clone(state),
                 loggedIn: action.user !== null,

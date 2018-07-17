@@ -1,5 +1,5 @@
 import React from 'react';
-import Actions from 'store/actions';
+import {Actions} from 'store';
 
 const LoginButton = (props) => {
     return (

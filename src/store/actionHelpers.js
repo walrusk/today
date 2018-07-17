@@ -1,6 +1,6 @@
 import snakeCase from 'lodash/snakeCase';
 import {keySet} from 'src/helpers/jsHelpers';
-import {dispatch} from 'src/store/configureStore';
+import {dispatch} from 'store/configureStore';
 
 export function typesObj(types) {
     return types.reduce((types, type) => {

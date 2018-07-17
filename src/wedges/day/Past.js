@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import Day from '@/day/Day';
-import Selectors from 'store/selectors';
-import {callObj} from 'src/helpers/jsHelpers';
+import {Selectors,withState} from 'store';
 
 class Past extends PureComponent {
     render() {
@@ -20,8 +19,8 @@ class Past extends PureComponent {
     }
 }
 
-const mapStateToProps = state => callObj({
-    past: Selectors.app.past,
-}, state);
+const mapStateToProps = state => withState(state, {
+    past: Selectors.list.past,
+});
 
 export default connect(mapStateToProps)(Past);

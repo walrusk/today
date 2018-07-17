@@ -1,5 +1,5 @@
 import {PureComponent} from 'react';
-import Actions from 'store/actions';
+import {Actions} from 'store';
 
 class EventListener extends PureComponent {
     componentDidMount() {

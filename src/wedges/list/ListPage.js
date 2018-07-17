@@ -1,13 +1,14 @@
-import React, {PureComponent,Fragment} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {Layout,Switch,Button,Popover} from 'antd';
 import Today from '@/day/Today';
 import Past from '@/day/Past';
 import LogoutButton from '@/auth/LogoutButton';
 import AppHeader from '@/app/AppHeader';
+import {Selectors,withState} from 'store';
 const {Content} = Layout;
 
-class TodoPage extends PureComponent {
+class ListPage extends PureComponent {
 
     state = {
         showHistory: true,
@@ -74,8 +75,8 @@ class TodoPage extends PureComponent {
 }
 
 // SELECTORS
-const mapStateToProps = state => ({
-    todoCount: state.app.today.length,
+const mapStateToProps = state => withState(state, {
+    listCount: Selectors.list.todayLength,
 });
 
-export default connect(mapStateToProps)(TodoPage);
+export default connect(mapStateToProps)(ListPage);

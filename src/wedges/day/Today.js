@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import ItemList from '@/item/ItemList';
+import ItemList from '@/list/ItemList';
+import {Selectors,withState} from 'store';
 
 class Today extends PureComponent {
     render() {
@@ -14,8 +15,8 @@ class Today extends PureComponent {
 }
 
 // SELECTORS
-const mapStateToProps = state => ({
-    items: state.app.today,
+const mapStateToProps = state => withState(state, {
+    items: Selectors.list.today,
 });
 
 export default connect(mapStateToProps)(Today);

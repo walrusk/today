@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'antd';
-import Actions from 'store/actions';
+import {Actions} from 'store';
 
 const LogoutButton = (props) => {
     return (

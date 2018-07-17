@@ -1,11 +1,10 @@
 import React, {PureComponent,Fragment} from 'react';
 import {connect} from 'react-redux';
 import EventListener from '@/app/EventListener';
-import TodoPage from '@/app/TodoPage';
+import ListPage from '@/list/ListPage';
 import LoadingPage from '@/app/LoadingPage';
 import LoginPage from '@/auth/LoginPage';
-import {callObj} from 'src/helpers/jsHelpers';
-import Selectors from 'store/selectors';
+import {Selectors,withState} from 'store';
 
 class AppContainer extends PureComponent {
     render() {
@@ -28,13 +27,13 @@ class AppContainer extends PureComponent {
             return <LoginPage />;
         }
 
-        return <TodoPage />;
+        return <ListPage />;
     }
 }
 
-const mapStateToProps = state => callObj({
+const mapStateToProps = state => withState(state, {
     initialLoad: Selectors.app.initialLoad,
     isLoggedIn: Selectors.auth.isLoggedIn,
-}, state);
+});
 
 export default connect(mapStateToProps)(AppContainer);

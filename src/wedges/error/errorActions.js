@@ -1,4 +1,4 @@
-import {typesObj} from 'src/helpers/actionHelpers';
+import {typesObj} from 'store/actionHelpers';
 
 export const Types = Object.freeze({
     ...typesObj([
