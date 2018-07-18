@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {Layout,Switch,Button,Popover} from 'antd';
-import Today from '@/day/Today';
-import Past from '@/day/Past';
-import LogoutButton from '@/auth/LogoutButton';
-import AppHeader from '@/app/AppHeader';
+import Today from '@/list/components/Today';
+import Past from '@/list/components/Past';
+import LogoutButton from '@/auth/components/LogoutButton';
+import AppHeader from '@/app/components/AppHeader';
 import {Selectors,withState} from 'store';
 const {Content} = Layout;
 

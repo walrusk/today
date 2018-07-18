@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import Day from '@/day/Day';
+import Day from '@/list/components/Day';
 import {Selectors,withState} from 'store';
 
 class Past extends PureComponent {

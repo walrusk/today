@@ -10,7 +10,7 @@ module.exports = function override(config, env) {
     
     config.resolve = {
         alias: {
-            '@': resolve('src/wedges'),
+            '@': resolve('src/blocks'),
             'src': resolve('src'),
             'store': resolve('src/store'),
         }

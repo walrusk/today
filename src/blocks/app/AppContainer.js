@@ -1,6 +1,6 @@
 import React, {PureComponent,Fragment} from 'react';
 import {connect} from 'react-redux';
-import EventListener from '@/app/EventListener';
+import EventListener from '@/app/components/EventListener';
 import ListPage from '@/list/ListPage';
 import LoadingPage from '@/app/LoadingPage';
 import LoginPage from '@/auth/LoginPage';

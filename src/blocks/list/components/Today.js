@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import ItemList from '@/list/ItemList';
+import ItemList from '@/list/components/ItemList';
 import {Selectors,withState} from 'store';
 
 class Today extends PureComponent {

@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import Item from '@/list/Item';
+import Item from '@/list/components/Item';
 
 class ItemList extends PureComponent {
     render() {

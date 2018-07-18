@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import AppHeader from '@/app/AppHeader';
+import AppHeader from '@/app/components/AppHeader';
 
 class LoadingPage extends PureComponent {
     render() {
