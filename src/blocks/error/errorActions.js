@@ -1,4 +1,4 @@
-import {typesObj} from 'store/actionHelpers';
+import {typesObj} from 'store/helpers';
 
 export const Types = Object.freeze({
     ...typesObj([
@@ -10,7 +10,7 @@ export const Actions = {
     syncError: (error) => {
         console.log(error);
         return {
-            type: Types.REQUEST_ERROR,
+            type: Types.SYNC_ERROR,
         };
     },
 };

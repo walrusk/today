@@ -1,19 +1,15 @@
-import {createActionCreatorGroup} from 'store/actionHelpers';
+import {createActionCreatorGroup} from 'store/helpers';
 
 const {Types: SimpleTypes, Actions: SimpleActions} = createActionCreatorGroup({
     // addPoint: [],
     // deletePoint: ['id'],
     // deletePoints: ['ids'],
-    // updatePoint: ['point', 'buffer'],
-    // updatingPoint: ['id'],
-    // updatedPoint: ['id'],
-    // updatePoints: ['points'],
-    // updatingPoints: ['ids'],
-    // updatedPoints: ['ids'],
-    // changedPoint: ['id'],
-    syncingPoint: ['id'],
-    syncedTodos: ['point'],
-    canceledSyncPoint: ['id'],
+    updateItem: ['item'],
+    updatingItem: ['id'],
+    updatedItem: ['id'],
+    syncingList: [],
+    syncedList: ['list'],
+    canceledSyncList: [],
 });
 
 export const Types = Object.freeze({

@@ -1,10 +1,10 @@
 import { all, fork } from 'redux-saga/effects';
-//import appSagas from '@/app/appSagas';
 import authSagas from '@/auth/authSagas';
+import listSagas from '@/list/listSagas';
 
 const sagas = [
-    //...appSagas,
     ...authSagas,
+    ...listSagas,
 ];
 
 export default function * rootSaga() {

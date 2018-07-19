@@ -11,4 +11,7 @@ const myFirebaseApp = firebase.initializeApp({
     messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER,
 });
 
+const firestore = firebase.firestore();
+firestore.settings({ timestampsInSnapshots: true });
+
 export default new ReduxSagaFirebase(myFirebaseApp);

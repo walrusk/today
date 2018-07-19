@@ -1,7 +1,6 @@
 service cloud.firestore {
     match /databases/{database}/documents {
-        match /points/{pointId} {
-          //allow read, update, delete: if request.auth.uid == resource.data._owner;
+        match /list/{itemId} {
           allow read, update, delete: if isOwner();
           allow create: if loggedIn();
         }
@@ -11,7 +10,7 @@ service cloud.firestore {
         }
 
         function isOwner() {
-            return request.auth.uid == existingData()._owner;
+            return request.auth.uid == existingData().owner;
         }
 
         function existingData() {

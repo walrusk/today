@@ -1,4 +1,4 @@
-import {createActionCreatorGroup} from 'store/actionHelpers';
+import {createActionCreatorGroup} from 'store/helpers';
 
 const {Types: SimpleTypes, Actions: SimpleActions} = createActionCreatorGroup({
     login: [],
