@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import firebase from 'firebase';
 import {Checkbox} from 'antd';
+import AutosizeInput from 'react-input-autosize';
 import {Actions} from 'store';
 
 class Item extends PureComponent {
@@ -39,7 +40,7 @@ class Item extends PureComponent {
         return (
             <li className="item">
                 <Checkbox checked={this.props.done} onChange={this.handleCheck} />
-                <input
+                <AutosizeInput
                     type="text"
                     value={this.state.name}
                     spellCheck={false}

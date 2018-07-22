@@ -30,7 +30,8 @@ const Queries = {
             firebase.firestore().collection('list')
                 .where('owner', '==', owner)
                 .orderBy('done')
-                .orderBy('date', 'desc'),
+                .orderBy('date', 'desc')
+                .limit(200),
             {
                 successActionCreator: Actions.list.syncedList,
                 failureActionCreator: Actions.error.syncError,

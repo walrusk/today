@@ -34,6 +34,7 @@ class NewItem extends PureComponent {
                     size="small"
                     placeholder="new..."
                     className="item-input-new"
+                    autoFocus
                 />
             </div>
         );

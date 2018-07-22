@@ -1,3 +1,5 @@
+import is from 'is_js';
+import {keyPush} from 'src/helpers/jsHelpers';
 import {Types,clone} from 'store';
 
 const initialState = {
@@ -10,7 +12,25 @@ function isToday(item) {
         return true;
     }
     const dateObj = item.date ? item.date.toDate() : new Date();
-    return dateObj.toDateString() === (new Date()).toDateString();
+    return is.today(dateObj);
+}
+
+function getStringDate(item) {
+    const dateObj = item.date ? item.date.toDate() : new Date();
+    if (is.yesterday(dateObj)) {
+        return 'Yesterday';
+    }
+
+    if (is.inLastWeek(dateObj)) {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return days[dateObj.getDay()];
+    }
+
+    return [
+        dateObj.getFullYear(),
+        dateObj.getMonth().toString().padStart(2, '0'),
+        dateObj.getDate()
+    ].join('-');
 }
 
 const ListReducer = (state, action) => {
@@ -28,18 +48,7 @@ const ListReducer = (state, action) => {
                     ...action.list.filter(item => isToday(item)),
                 ],
                 past: Object.entries(action.list.filter(item => !isToday(item)).reduce((carry, item) => {
-                    const dateObj = item.date ? item.date.toDate() : new Date();
-                    const stringDate = [
-                        dateObj.getFullYear(),
-                        dateObj.getMonth().toString().padStart(2, '0'),
-                        dateObj.getDate()
-                    ].join('-');
-
-                    if (carry[stringDate] === undefined) {
-                        carry[stringDate] = [];
-                    }
-                    carry[stringDate].push(item);
-                    return carry;
+                    return keyPush(carry, getStringDate(item), item);
                 }, {})).map(([date, items]) => ({ date, items })).sort((a,b) => a.date < b.date),
             };
 
