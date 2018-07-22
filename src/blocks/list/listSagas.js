@@ -1,10 +1,12 @@
 import firebase from 'firebase';
 import {
     fork, take, call, cancel, takeLatest,
-    cancelled, select, put,
+    takeEvery, cancelled, select, put,
 } from 'redux-saga/effects';
+import {delay} from 'redux-saga';
+import pick from 'lodash/pick';
 import rsf from 'src/store/base';
-import {Selectors,Actions,Types} from 'store';
+import {Selectors,ActionCreators as Actions,Types} from 'store';
 
 const Transformers = {
     item: item => {
@@ -18,10 +20,7 @@ const Transformers = {
 };
 
 const Filters = {
-    item: item => ({
-        ...item,
-        date: firebase.firestore.FieldValue.serverTimestamp(),
-    }),
+    item: item => pick(item, ['owner', 'name', 'done', 'date']),
 };
 
 const Queries = {
@@ -29,7 +28,9 @@ const Queries = {
         return call(
             rsf.firestore.syncCollection,
             firebase.firestore().collection('list')
-                .where('owner', '==', owner),
+                .where('owner', '==', owner)
+                .orderBy('done')
+                .orderBy('date', 'desc'),
             {
                 successActionCreator: Actions.list.syncedList,
                 failureActionCreator: Actions.error.syncError,
@@ -37,19 +38,51 @@ const Queries = {
             }
         );
     },
-    updateItem: ({id, ...item}) => {
+    updateItem: (owner, {id, ...item}) => {
         return call(
             rsf.firestore.updateDocument,
             `list/${id}`,
-            Filters.item(item),
+            Filters.item({
+                ...item,
+                owner,
+            }),
+        );
+    },
+    addItem: (owner, item) => {
+        return call(
+            rsf.firestore.addDocument,
+            'list',
+            Filters.item({
+                ...item,
+                owner,
+            }),
+        );
+    },
+    deleteItem: (id) => {
+        return call(
+            rsf.firestore.deleteDocument,
+            `list/${id}`,
         );
     },
 };
 
-function * updateItem({item}) {
+function * addItem({item}) {
+    const owner = yield select(Selectors.auth.owner);
+    yield Queries.addItem(owner, item);
+}
+
+function * updateItem({item, buffer = 0}) {
+    if (buffer > 0) {
+        yield delay(buffer);
+    }
+    const owner = yield select(Selectors.auth.owner);
     yield put(Actions.list.updatingItem(item.id));
-    yield Queries.updateItem(item);
+    yield Queries.updateItem(owner, item);
     yield put(Actions.list.updatedItem(item.id));
+}
+
+function * deleteItem({id}) {
+    yield Queries.deleteItem(id);
 }
 
 function * syncList() {
@@ -86,6 +119,8 @@ function * rootPointSaga() {
 }
 
 export default [
+    function * () { yield takeEvery(Types.list.ADD_ITEM, addItem); },
     function * () { yield takeLatest(Types.list.UPDATE_ITEM, updateItem); },
+    function * () { yield takeEvery(Types.list.DELETE_ITEM, deleteItem); },
     rootPointSaga,
 ];

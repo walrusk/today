@@ -29,6 +29,13 @@ export const Actions = {
     error: btd(ErrorActions),
 };
 
+export const ActionCreators = {
+    app: AppActions,
+    auth: AuthActions,
+    list: ListActions,
+    error: ErrorActions,
+};
+
 export const Types = {
     app: AppTypes,
     auth: AuthTypes,

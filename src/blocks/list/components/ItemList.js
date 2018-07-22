@@ -9,7 +9,7 @@ class ItemList extends PureComponent {
             </ul>
         );
     }
-    
+
     renderItems() {
         return this.props.items.map(item => (
             <Item key={item.id} {...item} />

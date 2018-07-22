@@ -14,12 +14,23 @@ class AppHeader extends PureComponent {
         );
     }
 
+    getIcon() {
+        if (this.props.isSyncWaiting) {
+            return 'hourglass';
+        }
+
+        if (this.props.loading || this.props.isSyncing) {
+            return 'loading';
+        }
+
+        return 'pushpin';
+    }
+
     renderAvatar() {
-        const icon = this.props.loading ? 'loading' : 'pushpin';       
         const avatar = (
             <Avatar
                 style={{ backgroundColor: styleVars['@primary-color'] }}
-                icon={icon}
+                icon={this.getIcon()}
             />
         );
 

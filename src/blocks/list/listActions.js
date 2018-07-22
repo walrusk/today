@@ -1,10 +1,9 @@
 import {createActionCreatorGroup} from 'store/helpers';
 
 const {Types: SimpleTypes, Actions: SimpleActions} = createActionCreatorGroup({
-    // addPoint: [],
-    // deletePoint: ['id'],
-    // deletePoints: ['ids'],
-    updateItem: ['item'],
+    addItem: ['item'],
+    deleteItem: ['id'],
+    updateItem: ['item', 'buffer'],
     updatingItem: ['id'],
     updatedItem: ['id'],
     syncingList: [],

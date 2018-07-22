@@ -1,13 +1,15 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import ItemList from '@/list/components/ItemList';
 import {Selectors,withState} from 'store';
+import NewItem from '@/list/components/NewItem';
+import ItemList from '@/list/components/ItemList';
 
 class Today extends PureComponent {
     render() {
         return (
             <div>
                 <h1>Today</h1>
+                <NewItem />
                 <ItemList items={this.props.items} />
             </div>
         );

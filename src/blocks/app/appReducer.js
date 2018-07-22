@@ -28,6 +28,29 @@ const AppReducer = (state, action) => {
             return state.initialLoad
                     ? { ...clone(state), initialLoad: false }
                     : state;
+        case Types.list.SYNCED_LIST:
+            return {
+                ...clone(state),
+                loading: false,
+                syncing: false,
+            };
+        case Types.list.UPDATE_ITEM:
+            return {
+                ...clone(state),
+                syncWaiting: true,
+            };
+        case Types.list.ADD_ITEM:
+        case Types.list.UPDATING_ITEM:
+            return {
+                ...clone(state),
+                syncing: true,
+                syncWaiting: false,
+            };
+        case Types.list.UPDATED_ITEM:
+            return {
+                ...clone(state),
+                syncing: false,
+            };
         default:
             return state;
     }

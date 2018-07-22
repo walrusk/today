@@ -50,6 +50,8 @@ class ListPage extends PureComponent {
             <Layout>
                 <AppHeader
                     count={this.props.todoCount}
+                    isSyncing={this.props.isSyncing}
+                    isSyncWaiting={this.props.isSyncWaiting}
                     menu={menu}
                 />
                 <Content>
@@ -77,6 +79,8 @@ class ListPage extends PureComponent {
 // SELECTORS
 const mapStateToProps = state => withState(state, {
     listCount: Selectors.list.todayLength,
+    isSyncing: Selectors.app.isSyncing,
+    isSyncWaiting: Selectors.app.isSyncWaiting,
 });
 
 export default connect(mapStateToProps)(ListPage);
