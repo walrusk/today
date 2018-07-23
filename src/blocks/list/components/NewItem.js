@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import firebase from 'firebase';
 import {Actions} from 'store';
 import {Input} from 'antd';
 
@@ -20,6 +21,7 @@ class NewItem extends PureComponent {
         Actions.list.addItem({
             done: false,
             name: evt.target.value,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
         });
         this.setState({ name: '' });
     }
