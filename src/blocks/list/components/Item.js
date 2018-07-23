@@ -40,13 +40,15 @@ class Item extends PureComponent {
         return (
             <li className="item">
                 <Checkbox checked={this.props.done} onChange={this.handleCheck} />
-                <AutosizeInput
-                    type="text"
-                    value={this.state.name}
-                    spellCheck={false}
-                    onChange={this.handleChangeNameWithBuffer}
-                    onBlur={this.handleBlur}
-                />
+                <div className="item-input-container">
+                    <AutosizeInput
+                        type="text"
+                        value={this.state.name}
+                        spellCheck={false}
+                        onChange={this.handleChangeNameWithBuffer}
+                        onBlur={this.handleBlur}
+                    />
+                </div>
             </li>
         );
     }
